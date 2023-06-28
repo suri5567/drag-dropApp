@@ -1,35 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import ProductDecription from './pages/ProductDecription';
+import ProductDetails from './pages/ProductDetails';
+import PartsAssembly from './pages/PartsAssembly';
+import FinalProductview from './pages/FinalProductview';
+import contextData from './contextApi/productData.js'
+import context from './contextApi/productsInfo.js'
+import contextParts from './contextApi/partsContext';
 
 function App() {
-  const [count, setCount] = useState(0)
+	const [selectedParts, setSelectedParts] = useState([]);
+	const [assembledParts, setAssembledParts] = useState([]);
+	const [parts] = useState(contextParts);
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+	return (
+		<>
+			<contextData.Provider value={{ selectedParts, setSelectedParts }}>
+				<context.Provider value={{ assembledParts, setAssembledParts }}>
+					<contextParts.Provider value={{parts}}>
+						{
+							selectedParts.length === 0 ? (
+								<ProductDecription />
+							) : assembledParts.length === 0 ? (
+								<ProductDetails />
+
+							) : assembledParts.length < selectedParts.length ? (
+								<PartsAssembly />
+							) : (
+								<FinalProductview />
+							)
+						}
+					</contextParts.Provider>
+				</context.Provider>
+			</contextData.Provider>
+		</>
+	)
 }
 
 export default App
