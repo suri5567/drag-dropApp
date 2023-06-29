@@ -3,20 +3,21 @@ import parts from '../Data'
 import { useNavigate } from 'react-router-dom';
 
 
-function ProductDetails(props) {
+function ProductDetails() {
 	const navigate = useNavigate();
 	const [selectedParts, setSelectedParts] = useState([]);
-	const { myFunck } = props;
+	// const { myFunck } = props;
 
 	const handlePartSelection = (part) => {
-		console.log("result", part);
 		setSelectedParts([...selectedParts, part]);
+
 	};
 
 	console.log("selectedParts", selectedParts)
 
 	function updateData() {
-		myFunck(selectedParts)
+        sessionStorage.setItem("selectedParts", JSON.stringify(selectedParts))
+		navigate('/partsAssembly')
 	}
 
 	return (
@@ -39,7 +40,7 @@ function ProductDetails(props) {
 				<div style={{ marginTop: "30px" }}>
 					<button style={{ border: "1px solid yellow", marginRight: "5px" }} onClick={() => navigate('/')}>Back</button>
 
-					<button style={{ border: "1px solid yellow" }} onClick={() => updateData}>Next</button>
+					<button style={{ border: "1px solid yellow" }} onClick={() => updateData()}>Next</button>
 
 				</div>
 

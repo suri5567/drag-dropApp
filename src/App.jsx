@@ -6,19 +6,17 @@ import FinalProductview from './pages/FinalProductview';
 
 
 function App() {
-	const [selectedParts, setSelectedParts] = useState([]);
+	// const [selectedParts, setSelectedParts] = useState([]);
 
-	const Takedata =(data)=>{
-		setSelectedParts(data);
-	}
+	// const Takedata = (data) => {
+	// 	setSelectedParts(data);
+	// }
 	return (
 		<>
-			
-					<ProductDescription />
-					<ProductDetails myFunck={Takedata}/>
-					<ProductAssembly sam={selectedParts} />
-					<FinalProductview />
-		
+			<ProductDescription />
+			<ProductDetails />
+			<ProductAssembly />
+			<FinalProductview />
 		</>
 	)
 }

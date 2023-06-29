@@ -1,15 +1,28 @@
 
 import { useState } from "react";
 
-function PartsAssembly({sam}) {
+function PartsAssembly() {
 	const [assembledParts, setAssembledParts] = useState([]);
+	const [selectedParts, setSelectedParts] = useState(() => {
+		const response = sessionStorage.getItem("selectedParts");
+		if (response) {
+			return JSON.parse(response)
+		}
+		else {
+			return [];
+		}
+	})
+
+
+
+
 
 	const handlePartAssembly = (part) => {
 		if (!assembledParts.includes(part)) {
 			setAssembledParts([...assembledParts, part]);
 		}
 	};
-	console.log("sam", sam);
+	console.log("result", selectedParts);
 
 	return (
 		<>
@@ -26,8 +39,8 @@ function PartsAssembly({sam}) {
 					<div
 						style={{
 							border: '1px solid black',
-							width: '300px',
-							height: '300px',
+							width: '1000px',
+							height: '500px',
 							margin: '0 10px',
 						}}
 						onDragOver={(e) => e.preventDefault()}
