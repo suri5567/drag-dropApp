@@ -32,14 +32,13 @@ function PartsAssembly() {
 			setAssembledParts([...assembledParts, part]);
 		}
 	};
-	// console.log("result", assembledParts);
-
+	
 	return (
 		<>
 			<div style={{textAlign:"center"}}>
 				<h1>Parts Assembly</h1>
-				<div style={{ display: 'flex' }}>
-					<div style={{ overflowY: 'scroll' }}>
+				<div style={{ display: 'flex'}}>
+					<div style={{ overflowY: 'scroll'}}>
 						{selectedParts.map((part) => (
 							<div style={{ width: "200px" }} key={part.id} draggable onDragStart={() => handlePartAssembly(part)}>
 								<img src={part.image} alt={part.name} style={{ width: "150px" }} />
