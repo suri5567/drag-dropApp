@@ -1,11 +1,11 @@
-import React from 'react'
+
 import { useContext } from 'react';
 import contextData from '../contextApi/productData';
-import contextParts from '../contextApi/partsContext';
+import parts from '../Data'
 
 function ProductDetails() {
-	const {selectedParts, setSelectedParts} = useContext(contextData);
-	const {parts} = useContext(contextParts);
+	const { selectedParts, setSelectedParts } = useContext(contextData);
+
 
 	const handlePartSelection = (part) => {
 		if (selectedParts.includes(part)) {
@@ -14,26 +14,27 @@ function ProductDetails() {
 			setSelectedParts([...selectedParts, part]);
 		}
 	};
-  return (
-	<>
-	   <div>
-              <h1>Parts Selection</h1>
-              <div style={{ overflowX: 'scroll' }}>
-                {parts.map((part) => (
-                  <div key={part.id}>
-                    <img src={part.image} alt={part.name} />
-                    <p>{part.name}</p>
-                    <input
-                      type="checkbox"
-                      checked={selectedParts.includes(part)}
-                      onChange={() => handlePartSelection(part)}
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-	</>
-  )
+
+	console.log("parts", parts);
+	return (
+		<>
+			<div style={{ margin: "50px 100px" }}>
+				<h1>Parts Selection</h1>
+				<div style={{ overflowX: 'scroll', display: "flex" }}>
+					{parts.map((part) => (
+						<div key={part.id} style={{ textAlign: "center", border: "2px solid black"}}>
+							<img src={part.image} alt={part.name} />
+							<p>{part.name}</p>
+							<input
+								type="checkbox"
+								onChange={() => handlePartSelection(part)}
+							/>
+						</div>
+					))}
+				</div>
+			</div>
+		</>
+	)
 }
 
 export default ProductDetails

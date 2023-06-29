@@ -1,16 +1,17 @@
-import React from 'react'
-import { useContext } from 'react';
-import contextData from '../contextApi/productData';
+
+import { useNavigate } from 'react-router-dom';
 
 
 function ProductDecription() {
-	const { setSelectedParts} = useContext(contextData);
+	const navigate = useNavigate();
 	return (
 		<>
-			<div>
-				<h1>Product Description</h1>
-				<img src="https://images.pexels.com/photos/8294568/pexels-photo-8294568.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Product" />
-				<button onClick={() => setSelectedParts([])}>START</button>
+			<div style={{ margin: "100px 600px", textAlign:"center" }}>
+				<h2 style={{fontSize:"20px"}}>Product Description</h2>
+				<div style={{ display: "flex", flexDirection: "column" }}>
+					<img src="https://img.freepik.com/free-photo/robot-character-with-smart-phone_1048-3573.jpg?size=626&ext=jpg&uid=R88439026&semt=ais" width={"350px"} />
+					<button onClick={() => navigate('/productDetails')}>START</button>
+				</div>
 			</div>
 		</>
 	)

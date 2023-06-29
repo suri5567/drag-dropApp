@@ -17,6 +17,8 @@ const parts = [{
 	name: "leftArm",
 }, {
 	id: "1254125128",
-	image: "https://img.freepik.com/premium-photo/image-cyber-prosthetic-legs-orange-background-created-using-generative-ai-technology_772924-1729.jpg?size=626&ext=jpg&uid=R88439026&semt=ais",
+	image: "https://images.pexels.com/photos/12733042/pexels-photo-12733042.jpeg?auto=compress&cs=tinysrgb&w=600",
 	name: "legs",
 }];
+
+export default parts;

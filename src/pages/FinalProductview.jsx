@@ -1,5 +1,5 @@
-import React from 'react'
-import context from './contextApi/productsInfo'
+
+import context from '../contextApi/productsInfo'
 import { useContext } from 'react';
 
 function FinalProductview() {
@@ -9,9 +9,9 @@ function FinalProductview() {
 			<div>
 				<h1>Final Product View</h1>
 				{assembledParts.map((part) =>
-					<div style={{ display: "flex" }}>
+					<div key={part.id} style={{ display: "flex" }}>
 						{assembledParts.map((part) =>
-							<div><img src={part.image} alt="dragedimage" /></div>
+							<div key={part.id}><img src={part.image} alt="dragedimage" /></div>
 						)}
 					</div>
 

@@ -1,6 +1,6 @@
-import React from 'react'
-import contextData from './contextApi/productData.js'
-import context from './contextApi/productsInfo.js'
+
+import contextData from '../contextApi/productData'
+import context from '../contextApi/productsInfo'
 import { useContext } from 'react';
 
 function PartsAssembly() {
