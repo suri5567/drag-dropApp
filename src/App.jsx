@@ -1,23 +1,24 @@
 import { useState } from 'react';
-import ProductDecription from './pages/ProductDescription';
-import contextData from './contextApi/productData'
-import context from './contextApi/productsInfo'
-
+import ProductDescription from './pages/ProductDescription';
+import ProductDetails from './pages/ProductDetails';
+import ProductAssembly from './pages/PartsAssembly';
+import FinalProductview from './pages/FinalProductview';
 
 
 function App() {
 	const [selectedParts, setSelectedParts] = useState([]);
-	const [assembledParts, setAssembledParts] = useState([]);
-	
 
-
+	const Takedata =(data)=>{
+		setSelectedParts(data);
+	}
 	return (
 		<>
-			<contextData.Provider value={{ selectedParts, setSelectedParts }}>
-				<context.Provider value={{ assembledParts, setAssembledParts }}>
-						<ProductDecription />
-				</context.Provider>
-			</contextData.Provider>
+			
+					<ProductDescription />
+					<ProductDetails myFunck={Takedata}/>
+					<ProductAssembly sam={selectedParts} />
+					<FinalProductview />
+		
 		</>
 	)
 }

@@ -2,7 +2,7 @@
 import { useNavigate } from 'react-router-dom';
 
 
-function ProductDecription() {
+function ProductDescription() {
 	const navigate = useNavigate();
 	return (
 		<>
@@ -17,4 +17,4 @@ function ProductDecription() {
 	)
 }
 
-export default ProductDecription;
+export default ProductDescription;

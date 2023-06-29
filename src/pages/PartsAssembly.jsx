@@ -1,18 +1,15 @@
 
-import contextData from '../contextApi/productData'
-import context from '../contextApi/productsInfo'
-import { useContext } from 'react';
+import { useState } from "react";
 
-function PartsAssembly() {
-	const { selectedParts } = useContext(contextData);
-	const { assembledParts, setAssembledParts } = useContext(context);
-
+function PartsAssembly({sam}) {
+	const [assembledParts, setAssembledParts] = useState([]);
 
 	const handlePartAssembly = (part) => {
 		if (!assembledParts.includes(part)) {
 			setAssembledParts([...assembledParts, part]);
 		}
 	};
+	console.log("sam", sam);
 
 	return (
 		<>
@@ -23,7 +20,6 @@ function PartsAssembly() {
 						{selectedParts.map((part) => (
 							<div key={part.id} draggable onDragStart={() => handlePartAssembly(part)}>
 								<img src={part.image} alt={part.name} />
-								<p>{part.name}</p>
 							</div>
 						))}
 					</div>
@@ -43,7 +39,7 @@ function PartsAssembly() {
 					>
 						<div style={{ display: "flex" }}>
 							{assembledParts.map((part) =>
-								<div><img src={part.image} alt="dragedimage" /></div>
+								<div key={part.id}><img src={part.image} alt={part.name} /></div>
 							)}
 						</div>
 					</div>

@@ -17,7 +17,7 @@ const parts = [{
 	name: "leftArm",
 }, {
 	id: "1254125128",
-	image: "https://images.pexels.com/photos/12733042/pexels-photo-12733042.jpeg?auto=compress&cs=tinysrgb&w=600",
+	image: "https://www.shutterstock.com/image-vector/robot-leg-vector-outline-icons-600w-2145729073.jpg",
 	name: "legs",
 }];
 
