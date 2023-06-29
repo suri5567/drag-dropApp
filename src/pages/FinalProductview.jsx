@@ -1,21 +1,29 @@
-
+import { useState } from "react";
 
 function FinalProductview() {
-	
-	return (
-	
-			<div>
-				<h1>Final Product View</h1>
-				{assembledParts.map((part) =>
-					<div key={part.id} style={{ display: "flex" }}>
-						{assembledParts.map((part) =>
-							<div key={part.id}><img src={part.image} alt={part.name} /></div>
-						)}
-					</div>
+	const [assembledParts] = useState(() => {
+		const response = sessionStorage.getItem("assembledParts");
+		if (response) {
+			return JSON.parse(response)
+		}
+		else {
+			return []
+		}
+	})
 
-				)}
+	return (
+
+		<>
+			<h1>Final Product View</h1>
+			<div>
+				{
+					assembledParts.map((part) =>
+						<img key={part.id} src={part.image} />
+					)
+				}
 			</div>
-		
+		</>
+
 	)
 }
 

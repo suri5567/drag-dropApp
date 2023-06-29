@@ -16,8 +16,13 @@ function ProductDetails() {
 	console.log("selectedParts", selectedParts)
 
 	function updateData() {
-        sessionStorage.setItem("selectedParts", JSON.stringify(selectedParts))
+		if(selectedParts.length>0){
+		sessionStorage.setItem("selectedParts", JSON.stringify(selectedParts))
 		navigate('/partsAssembly')
+		}
+		else{
+			alert("Please select the parts for assembly !!!")
+		}
 	}
 
 	return (
